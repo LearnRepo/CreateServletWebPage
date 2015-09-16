@@ -38,17 +38,16 @@ public class SendMessage extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		String htmlCode = new String("");
 		Enumeration paraName = request.getParameterNames();
-		htmlCode="<!doctype html public \"-//w3c//dtd html 4.0 " +
-      "transitional//en\">\n<html><body><table border=1>";
+		htmlCode="<html><body>\r<table border=1 id='sendmail'>";
 		while(paraName.hasMoreElements())
 		{
 			String str = (String)paraName.nextElement();
-			htmlCode="<tr>";
+			htmlCode+="<tr>";
 			htmlCode+="<td>"+str+"</td>";
 			htmlCode+="<td>"+request.getParameter(str)+"</td>";
 			htmlCode+="</tr>";
 		}
-		htmlCode+="</table></body></html>";
+		htmlCode+="</table>\r</body></html>";
 		out.print(htmlCode);
 	}
 

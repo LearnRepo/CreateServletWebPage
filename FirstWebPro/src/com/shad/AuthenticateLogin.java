@@ -3,10 +3,12 @@ package com.shad;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class AuthenticateLogin
@@ -34,8 +36,16 @@ public class AuthenticateLogin extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		PrintWriter out = response.getWriter();
-		out.print("Welcome to Servlet");
+		 HttpSession session=request.getSession();
+		 String name =new String("");
+		 PrintWriter out = response.getWriter();
+		 
+		 name = (String)request.getParameter("username");
+		 out.print(name);
+	     /*session.setAttribute("name",name);
+	     
+		RequestDispatcher rs = request.getRequestDispatcher("WelcomeUser.jsp");
+		rs.include(request,response);*/
 	}
 
 }
